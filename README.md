@@ -8,3 +8,6 @@ install nightwatch :
 
 Install Firefox Driver :
 `npm install geckodriver --save-dev`
+
+Install Chrome Driver :
+`npm install chromedriver --save-dev`
