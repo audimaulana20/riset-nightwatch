@@ -37,12 +37,23 @@ module.exports = {
       },
 
       desiredCapabilities: {
-        browserName : 'firefox'
+        browserName : 'chrome',
+        chromeOptions : {
+          // This tells Chromedriver to run using the legacy JSONWire protocol (not required in Chrome 78)
+          // w3c: false,
+          // More info on Chromedriver: https://sites.google.com/a/chromium.org/chromedriver/
+          args: [
+            //'--no-sandbox',
+            //'--ignore-certificate-errors',
+            //'--allow-insecure-localhost',
+            '--headless'
+          ]
+        }
       },
 
       webdriver: {
         start_process: true,
-        server_path: (Services.geckodriver ? Services.geckodriver.path : '')
+        server_path: (Services.chromedriver ? Services.chromedriver.path : '')
       }
     },
 
@@ -56,7 +67,7 @@ module.exports = {
           // acceptInsecureCerts: true,
           'moz:firefoxOptions': {
             args: [
-              // '-headless',
+               '--headless',
               // '-verbose'
             ],
           }
@@ -84,7 +95,7 @@ module.exports = {
             //'--no-sandbox',
             //'--ignore-certificate-errors',
             //'--allow-insecure-localhost',
-            //'--headless'
+            '--headless'
           ]
         }
       },
